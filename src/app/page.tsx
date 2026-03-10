@@ -1,12 +1,14 @@
-import { getMarkdownFile } from "@/lib/markdown";
+import { getAboutSections } from "@/lib/markdown";
+import AboutSection from "@/components/about/AboutSection";
 
 export default async function HomePage() {
-  const { html } = await getMarkdownFile("about.md");
+  const sections = await getAboutSections();
 
   return (
-    <article
-      className="prose prose-zinc max-w-none"
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    <div className="space-y-16">
+      {sections.map((section) => (
+        <AboutSection key={section.slug} section={section} />
+      ))}
+    </div>
   );
 }

@@ -13,6 +13,25 @@ export async function getMarkdownFile(filePath: string) {
   return { frontMatter, content, html };
 }
 
+export async function getAboutSections() {
+  const dirPath = path.join(CONTENTS_DIR, "about");
+  if (!fs.existsSync(dirPath)) return [];
+
+  const files = fs
+    .readdirSync(dirPath)
+    .filter((f) => f.endsWith(".md"))
+    .sort(); // 01-, 02- プレフィックスでソート
+
+  return Promise.all(
+    files.map(async (filename) => {
+      const raw = fs.readFileSync(path.join(dirPath, filename), "utf-8");
+      const { data: frontMatter, content } = matter(raw);
+      const html = String(await marked.parse(content));
+      return { slug: filename.replace(".md", ""), frontMatter, html };
+    }),
+  );
+}
+
 export function getMarkdownList(subDir: string) {
   const dirPath = path.join(CONTENTS_DIR, subDir);
   if (!fs.existsSync(dirPath)) return [];
