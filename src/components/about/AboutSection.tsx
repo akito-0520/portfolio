@@ -8,11 +8,9 @@ type Section = {
   html: string;
 };
 
-type Experience = Record<string, string>;
-
 type Props = {
   section: Section;
-  experiences?: Experience[];
+  experiences?: Record<string, string>[];
 };
 
 export default function AboutSection({ section, experiences = [] }: Props) {
@@ -26,7 +24,11 @@ export default function AboutSection({ section, experiences = [] }: Props) {
       return (
         <ExperienceSection
           title={frontMatter.title as string}
-          experiences={experiences}
+          experiences={
+            experiences as Parameters<
+              typeof ExperienceSection
+            >[0]["experiences"]
+          }
         />
       );
     case "skills":
