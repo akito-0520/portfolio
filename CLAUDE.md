@@ -34,7 +34,7 @@ npm run format   # Prettier でフォーマット（ファイルを上書き）
 | `/`                | `src/app/page.tsx`                 | `contents/about/` 内の複数 md を結合して表示 |
 | `/articles`        | `src/app/articles/page.tsx`        | `contents/articles/*.md` の一覧              |
 | `/articles/[slug]` | `src/app/articles/[slug]/page.tsx` | 記事詳細                                     |
-| `/awards`          | `src/app/awards/page.tsx`          | `contents/awards/*.md` の一覧                |
+| `/experiences`     | `src/app/experiences/page.tsx`     | `contents/experiences/*.md` の一覧           |
 | `/products`        | `src/app/products/page.tsx`        | `contents/products/*.md` のカード一覧        |
 
 ---
@@ -81,10 +81,10 @@ npm run format   # Prettier でフォーマット（ファイルを上書き）
 
 ---
 
-### フロントマター（articles / awards / products）
+### フロントマター（articles / experiences / products）
 
-| カテゴリ | フィールド                                                         |
-| -------- | ------------------------------------------------------------------ |
-| articles | `title`、`createdAt`、`updatedAt`、`tags`、`author`、`description` |
-| awards   | `title`、`date`、`organization`、`description`                     |
-| products | `title`、`description`、`url`（任意）                              |
+| カテゴリ    | フィールド                                                         |
+| ----------- | ------------------------------------------------------------------ |
+| articles    | `title`、`createdAt`、`updatedAt`、`tags`、`author`、`description` |
+| experiences | `title`、`date`、`organization`、`description`                     |
+| products    | `title`、`description`、`url`（任意）                              |
