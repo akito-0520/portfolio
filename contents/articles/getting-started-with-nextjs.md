@@ -1,6 +1,9 @@
 ---
 title: Next.js App Router 入門
-date: "2024-12-01"
+createdAt: "2024-12-01"
+updatedAt: "2024-12-01"
+tags: ["Next.js", "React", "TypeScript"]
+author: nakagawa
 description: Next.js 15 の App Router を使ったポートフォリオサイトの構築について解説します。
 ---
 

@@ -17,11 +17,8 @@ export default function ArticlesPage() {
             <li key={article.slug}>
               <Link
                 href={`/articles/${article.slug}`}
-                className="group flex flex-col gap-1 rounded-lg border border-slate-200 p-5 transition-shadow hover:shadow-md"
+                className="group flex flex-col gap-2 rounded-lg border border-slate-200 p-5 transition-shadow hover:shadow-md"
               >
-                <p className="text-xs font-medium text-slate-400">
-                  {article.date}
-                </p>
                 <h2 className="text-base font-semibold text-slate-900 transition-colors group-hover:text-blue-600">
                   {article.title}
                 </h2>
@@ -30,6 +27,35 @@ export default function ArticlesPage() {
                     {article.description}
                   </p>
                 )}
+                <div className="flex flex-wrap items-center gap-2">
+                  {article.createdAt && (
+                    <span className="text-xs text-slate-400">
+                      作成: {article.createdAt}
+                    </span>
+                  )}
+                  {article.updatedAt && (
+                    <span className="text-xs text-slate-400">
+                      更新: {article.updatedAt}
+                    </span>
+                  )}
+                  {article.author && (
+                    <span className="text-xs text-slate-400">
+                      {article.author}
+                    </span>
+                  )}
+                  {article.tags &&
+                    (Array.isArray(article.tags)
+                      ? article.tags
+                      : String(article.tags).split(",")
+                    ).map((tag: string) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600"
+                      >
+                        {tag.trim()}
+                      </span>
+                    ))}
+                </div>
               </Link>
             </li>
           ))}

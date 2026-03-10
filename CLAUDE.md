@@ -47,7 +47,7 @@ npm run format   # Prettier でフォーマット（ファイルを上書き）
 | --------------------------- | -------------------------------------------------------------------- |
 | `getAboutSections()`        | `contents/about/*.md` をファイル名順に読み込み、セクション配列を返す |
 | `getMarkdownFile(filePath)` | 単一ファイルを読み込み `{ frontMatter, content, html }` を返す       |
-| `getMarkdownList(subDir)`   | サブディレクトリ内の全 `.md` を一覧取得し `date` 降順でソート        |
+| `getMarkdownList(subDir)`   | サブディレクトリ内の全 `.md` を一覧取得し `createdAt` 降順でソート   |
 
 ---
 
@@ -71,10 +71,20 @@ npm run format   # Prettier でフォーマット（ファイルを上書き）
 
 ---
 
+### スタイリング
+
+- Tailwind CSS v4 を使用。設定ファイル（`tailwind.config.js`）は不要で、`globals.css` の `@theme inline` ブロックでカスタム変数を定義。
+- フォントは Geist Sans / Geist Mono（`layout.tsx` で CSS 変数として注入）。
+- レイアウト幅は `max-w-2xl px-6`（`layout.tsx` の `<main>`）。
+- Markdown レンダリングには `prose prose-slate` クラスを使用。カラーは `globals.css` でカスタマイズ済み。
+- クラスの並び順は `prettier-plugin-tailwindcss` が自動ソート。
+
+---
+
 ### フロントマター（articles / awards / products）
 
-| カテゴリ | フィールド                                     |
-| -------- | ---------------------------------------------- |
-| articles | `title`、`date`、`description`                 |
-| awards   | `title`、`date`、`organization`、`description` |
-| products | `title`、`description`、`url`（任意）          |
+| カテゴリ | フィールド                                                         |
+| -------- | ------------------------------------------------------------------ |
+| articles | `title`、`createdAt`、`updatedAt`、`tags`、`author`、`description` |
+| awards   | `title`、`date`、`organization`、`description`                     |
+| products | `title`、`description`、`url`（任意）                              |

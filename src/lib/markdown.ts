@@ -47,5 +47,5 @@ export function getMarkdownList(subDir: string) {
         string
       >;
     })
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+    .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
 }
