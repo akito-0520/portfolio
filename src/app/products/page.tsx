@@ -5,21 +5,23 @@ export default function ProductsPage() {
 
   return (
     <div>
-      <h1 className="mb-10 text-2xl font-semibold tracking-tight text-zinc-900">
+      <h1 className="mb-10 text-2xl font-bold tracking-tight text-slate-900">
         Products
       </h1>
       {products.length === 0 ? (
-        <p className="text-zinc-400">制作物はまだありません。</p>
+        <p className="text-sm text-slate-400">制作物はまだありません。</p>
       ) : (
-        <ul className="grid gap-6 sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {products.map((product) => (
             <li
               key={product.slug}
-              className="rounded-lg border border-zinc-100 p-5"
+              className="flex flex-col rounded-lg border border-slate-200 p-5 transition-shadow hover:shadow-md"
             >
-              <h2 className="font-medium text-zinc-900">{product.title}</h2>
+              <h2 className="text-sm font-semibold text-slate-900">
+                {product.title}
+              </h2>
               {product.description && (
-                <p className="mt-2 line-clamp-3 text-sm text-zinc-500">
+                <p className="mt-2 line-clamp-3 grow text-sm text-slate-500">
                   {product.description}
                 </p>
               )}
@@ -28,7 +30,7 @@ export default function ProductsPage() {
                   href={product.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-block text-xs text-zinc-400 transition-colors hover:text-zinc-600"
+                  className="mt-4 text-xs font-medium text-blue-600 transition-colors hover:text-blue-800"
                 >
                   リンク →
                 </a>

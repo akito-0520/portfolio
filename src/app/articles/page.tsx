@@ -6,22 +6,27 @@ export default function ArticlesPage() {
 
   return (
     <div>
-      <h1 className="mb-10 text-2xl font-semibold tracking-tight text-zinc-900">
+      <h1 className="mb-10 text-2xl font-bold tracking-tight text-slate-900">
         Articles
       </h1>
       {articles.length === 0 ? (
-        <p className="text-zinc-400">記事はまだありません。</p>
+        <p className="text-sm text-slate-400">記事はまだありません。</p>
       ) : (
-        <ul className="space-y-8">
+        <ul className="space-y-6">
           {articles.map((article) => (
             <li key={article.slug}>
-              <Link href={`/articles/${article.slug}`} className="group block">
-                <p className="text-xs text-zinc-400">{article.date}</p>
-                <h2 className="mt-1 text-lg font-medium text-zinc-900 transition-colors group-hover:text-zinc-600">
+              <Link
+                href={`/articles/${article.slug}`}
+                className="group flex flex-col gap-1 rounded-lg border border-slate-200 p-5 transition-shadow hover:shadow-md"
+              >
+                <p className="text-xs font-medium text-slate-400">
+                  {article.date}
+                </p>
+                <h2 className="text-base font-semibold text-slate-900 transition-colors group-hover:text-blue-600">
                   {article.title}
                 </h2>
                 {article.description && (
-                  <p className="mt-1 line-clamp-2 text-sm text-zinc-500">
+                  <p className="line-clamp-2 text-sm text-slate-500">
                     {article.description}
                   </p>
                 )}

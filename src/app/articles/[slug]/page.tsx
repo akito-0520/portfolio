@@ -27,18 +27,20 @@ export default async function ArticlePage({
     <div>
       <Link
         href="/articles"
-        className="text-sm text-zinc-400 transition-colors hover:text-zinc-600"
+        className="text-sm font-medium text-slate-400 transition-colors hover:text-blue-600"
       >
         ← Articles
       </Link>
-      <div className="mt-8">
-        <p className="text-xs text-zinc-400">{frontMatter!.date}</p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900">
+      <div className="mt-8 border-b border-slate-200 pb-8">
+        <p className="text-xs font-medium text-slate-400">
+          {frontMatter!.date}
+        </p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
           {frontMatter!.title}
         </h1>
       </div>
       <article
-        className="prose prose-zinc mt-10 max-w-none"
+        className="prose prose-slate mt-10 max-w-none"
         dangerouslySetInnerHTML={{ __html: html! }}
       />
     </div>
