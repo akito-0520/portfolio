@@ -1,5 +1,5 @@
 import { getSlide, getSlideList } from "@/lib/slides";
-import PdfViewer from "@/components/PdfViewer";
+import PdfViewerClient from "@/components/PdfViewerClient";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -35,7 +35,7 @@ export default async function SlidePage({
           <p className="mt-1 text-xs text-slate-400">{slide.date}</p>
         )}
       </div>
-      <PdfViewer pdfUrl={`/slides/${slide.pdfFile}`} />
+      <PdfViewerClient pdfUrl={`/slides/${slide.pdfFile}`} />
     </div>
   );
 }
