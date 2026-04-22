@@ -1,43 +1,31 @@
-import { getMarkdownList } from "../../lib/markdown";
+import { getMarkdownFile, getMarkdownList } from "../../lib/markdown";
+import ProductsList, { type Product } from "./ProductsList";
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
   const products = getMarkdownList("products");
+
+  const productsWithHtml: Product[] = await Promise.all(
+    products.map(async (p) => {
+      const { html } = await getMarkdownFile(`products/${p.slug}.md`);
+      return {
+        slug: p.slug,
+        title: p.title,
+        description: p.description,
+        url: p.url,
+        html,
+      };
+    }),
+  );
 
   return (
     <div>
       <h1 className="mb-10 text-2xl font-bold tracking-tight text-slate-900">
         Products
       </h1>
-      {products.length === 0 ? (
+      {productsWithHtml.length === 0 ? (
         <p className="text-sm text-slate-400">制作物はまだありません。</p>
       ) : (
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {products.map((product) => (
-            <li
-              key={product.slug}
-              className="flex flex-col rounded-lg border border-slate-200 p-5 transition-shadow hover:shadow-md"
-            >
-              <h2 className="text-sm font-semibold text-slate-900">
-                {product.title}
-              </h2>
-              {product.description && (
-                <p className="mt-2 line-clamp-3 grow text-sm text-slate-500">
-                  {product.description}
-                </p>
-              )}
-              {product.url && (
-                <a
-                  href={product.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 text-xs font-medium text-blue-600 transition-colors hover:text-blue-800"
-                >
-                  リンク →
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
+        <ProductsList products={productsWithHtml} />
       )}
     </div>
   );
