@@ -1,7 +1,7 @@
 import { getSlide, getSlideList } from "../../../lib/slides";
-import PdfViewerClient from "@/components/PdfViewerClient";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import PdfViewerClient from "../../../components/PdfViewerClient";
 
 export function generateStaticParams() {
   return getSlideList().map((s) => ({ slug: s.slug }));
