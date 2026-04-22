@@ -1,4 +1,4 @@
-import { getMarkdownFile, getMarkdownList } from "@/lib/markdown";
+import { getMarkdownFile, getMarkdownList } from "../../../lib/markdown";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 

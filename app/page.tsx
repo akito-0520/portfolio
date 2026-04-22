@@ -1,5 +1,5 @@
-import { getAboutSections, getMarkdownList } from "@/lib/markdown";
-import AboutSection from "@/components/about/AboutSection";
+import AboutSection from "../components/about/AboutSection";
+import { getAboutSections, getMarkdownList } from "../lib/markdown";
 
 export default async function HomePage() {
   const sections = await getAboutSections();

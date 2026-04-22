@@ -1,4 +1,4 @@
-import { getMarkdownList } from "@/lib/markdown";
+import { getMarkdownList } from "../../lib/markdown";
 import Link from "next/link";
 
 export default function ArticlesPage() {

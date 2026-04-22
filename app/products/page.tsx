@@ -1,4 +1,4 @@
-import { getMarkdownList } from "@/lib/markdown";
+import { getMarkdownList } from "../../lib/markdown";
 
 export default function ProductsPage() {
   const products = getMarkdownList("products");

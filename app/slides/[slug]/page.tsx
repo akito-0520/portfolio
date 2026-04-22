@@ -1,4 +1,4 @@
-import { getSlide, getSlideList } from "@/lib/slides";
+import { getSlide, getSlideList } from "../../../lib/slides";
 import PdfViewerClient from "@/components/PdfViewerClient";
 import Link from "next/link";
 import { notFound } from "next/navigation";

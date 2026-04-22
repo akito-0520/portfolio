@@ -1,4 +1,4 @@
-import { getSlideList } from "@/lib/slides";
+import { getSlideList } from "../../lib/slides";
 import Link from "next/link";
 
 export default function SlidesPage() {
