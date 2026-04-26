@@ -1,4 +1,5 @@
 import AboutSection from "../components/about/AboutSection";
+import ContactSection from "../components/about/ContactSection";
 import { getAboutSections, getMarkdownList } from "../lib/markdown";
 
 export default async function HomePage() {
@@ -14,6 +15,7 @@ export default async function HomePage() {
           experiences={experiences}
         />
       ))}
+      <ContactSection />
     </div>
   );
 }
