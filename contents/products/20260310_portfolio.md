@@ -1,7 +1,7 @@
 ---
 title: Portfolio
 description: Next.js App Router と Markdown ファイルベースのコンテンツ管理で構築した、明るくモダンな個人ポートフォリオサイト。
-url: https://github.com/akito-0520/portfolio
+url: https://akiton.net
 createdAt: "2026-03-10"
 ---
 
