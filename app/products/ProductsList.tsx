@@ -35,7 +35,7 @@ export default function ProductsList({ products }: { products: Product[] }) {
             <button
               type="button"
               onClick={() => setActive(product)}
-              className="flex h-full w-full flex-col rounded-lg border border-slate-200 p-5 text-left transition-shadow hover:shadow-md"
+              className="flex h-full w-full flex-col rounded-xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               <h2 className="text-sm font-semibold text-slate-900">
                 {product.title}

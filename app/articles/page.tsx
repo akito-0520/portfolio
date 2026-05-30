@@ -17,7 +17,7 @@ export default function ArticlesPage() {
             <li key={article.slug}>
               <Link
                 href={`/articles/${article.slug}`}
-                className="group flex flex-col gap-2 rounded-lg border border-slate-200 p-5 transition-shadow hover:shadow-md"
+                className="group flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
               >
                 <h2 className="text-base font-semibold text-slate-900 transition-colors group-hover:text-blue-600">
                   {article.title}
