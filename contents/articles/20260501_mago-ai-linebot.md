@@ -39,7 +39,7 @@ description: シニア向けに「孫の代わりにAIが24時間答えてくれ
 
 Clean Architecture に準拠。「Echo + LINE に学習スコープを絞り、その他はプロダクション水準」という方針で実装。
 
-```
+```text
 internal/
 ├── domain/          # エンティティ（外部依存ゼロ）
 ├── usecase/         # アプリケーションロジック + Ports
