@@ -3,6 +3,7 @@ title: EasyCreateRotenApp
 description: 学園祭の露店運営における「回転」を効率化するための従事者向け Web アプリ。4I で開発し、フロントエンドを担当。
 url: https://github.com/hirune05/EasyCreateRotenAppWeb
 createdAt: "2024-07-15"
+pinned: true
 ---
 
 ## 概要

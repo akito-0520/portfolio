@@ -1,6 +1,7 @@
 import ProfileSection from "./ProfileSection";
 import ExperienceSection from "./ExperienceSection";
 import SkillsSection from "./SkillsSection";
+import ProductsSection from "./ProductsSection";
 
 type Section = {
   slug: string;
@@ -8,12 +9,23 @@ type Section = {
   html: string;
 };
 
+type Product = {
+  title: string;
+  description: string;
+  url?: string;
+};
+
 type Props = {
   section: Section;
   experiences?: Record<string, string>[];
+  pinnedProducts?: Product[];
 };
 
-export default function AboutSection({ section, experiences = [] }: Props) {
+export default function AboutSection({
+  section,
+  experiences = [],
+  pinnedProducts = [],
+}: Props) {
   const { frontMatter, html } = section;
   const type = frontMatter.type as string;
 
@@ -40,6 +52,13 @@ export default function AboutSection({ section, experiences = [] }: Props) {
               typeof SkillsSection
             >[0]["categories"]
           }
+        />
+      );
+    case "products":
+      return (
+        <ProductsSection
+          title={frontMatter.title as string}
+          products={pinnedProducts}
         />
       );
     default:

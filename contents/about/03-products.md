@@ -1,0 +1,4 @@
+---
+type: products
+title: Products
+---
