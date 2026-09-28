@@ -1,0 +1,29 @@
+name: Sync contents to context-server
+
+# main の contents/ が変わったら、個人コンテキストサーバ（private）に写しを送る
+on:
+  push:
+    branches: [main]
+    paths:
+      - "contents/**"
+      - "scripts/sync-context.mjs"
+  workflow_dispatch:
+
+concurrency:
+  group: sync-context
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: node scripts/sync-context.mjs
+        env:
+          CONTEXT_INGEST_URL: ${{ secrets.CONTEXT_INGEST_URL }}
+          CONTEXT_INGEST_TOKEN: ${{ secrets.CONTEXT_INGEST_TOKEN }}
