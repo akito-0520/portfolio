@@ -30,7 +30,8 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} ${geistMono.variable} bg-background antialiased`}
       >
-        <Analytics />
+        {/* Vercel Analytics は Vercel 上でしか動かない（Workers では /_vercel が 404 になる） */}
+        {process.env.VERCEL && <Analytics />}
         <Nav />
         <main className="mx-auto max-w-2xl px-6 py-20">{children}</main>
       </body>

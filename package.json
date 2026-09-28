@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "preview:workers": "npm run build && wrangler dev",
+    "deploy:workers": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -29,6 +31,11 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.142.0"
+  },
+  "allowScripts": {
+    "workerd@1.20260926.1": true,
+    "esbuild@0.28.1": true
   }
 }

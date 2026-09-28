@@ -15,7 +15,13 @@ npm run dev      # 開発サーバーを localhost:3000 で起動
 npm run build    # 本番用ビルド
 npm run lint     # ESLint を実行
 npm run format   # Prettier でフォーマット（ファイルを上書き）
+npm run preview:workers  # 静的書き出し（out/）を Workers としてローカルで確認
+npm run deploy:workers   # Workers にデプロイ（通常は GitHub Actions が main への push で行う）
 ```
+
+### デプロイ
+
+`next.config.ts` の `output: "export"` で、すべてのページを静的な HTML として `out/` に書き出す。同じ成果物を Vercel と Cloudflare Workers（静的アセット、`wrangler.jsonc`）の両方で配信できる。サーバーでしか動かない機能（API Routes、`headers()`、画像の最適化など）は使わない。
 
 テストフレームワークは未導入。
 
