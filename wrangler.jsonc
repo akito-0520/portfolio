@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // 公開サイト。Next.js の静的書き出し（out/）を Workers の静的アセットとして配信する
+  "name": "portfolio",
+  "compatibility_date": "2026-08-22",
+  "assets": {
+    "directory": "./out",
+    // /articles → articles.html のように、拡張子なしの URL で配信する
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+  },
+  // ドメインを移すときにコメントを外して置き換える
+  // "routes": [{ "pattern": "example.com", "custom_domain": true }],
+}

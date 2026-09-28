@@ -1,0 +1,37 @@
+name: Deploy to Cloudflare Workers
+
+# main への push で静的書き出しをビルドし、Workers にデプロイする。
+# CLOUDFLARE_API_TOKEN が未設定の間は何もしない（Vercel から移すまでの並行運用のため）
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-workers
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      ENABLED: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+    steps:
+      - if: env.ENABLED == 'true'
+        uses: actions/checkout@v4
+      - if: env.ENABLED == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - if: env.ENABLED == 'true'
+        run: npm ci
+      - if: env.ENABLED == 'true'
+        run: npm run build
+      - if: env.ENABLED == 'true'
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - if: env.ENABLED != 'true'
+        run: echo "CLOUDFLARE_API_TOKEN が未設定のため、Workers へのデプロイをスキップします。"
